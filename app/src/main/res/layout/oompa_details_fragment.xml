@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="oompaDetail"
+            type="com.rubenarenas.oompasnap.domain.entities.OompaDetail" />
+
+        <variable
+            name="viewModel"
+            type="com.rubenarenas.oompasnap.ui.viewmodel.DetailedViewModel" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#616161"
+        tools:context=".MainActivity">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="155dp"
+            android:layout_height="155dp"
+            android:layout_marginTop="24dp"
+            app:cardBackgroundColor="@color/cardview_light_background"
+            app:cardCornerRadius="250dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                app:cardCornerRadius="250dp">
+
+                <ImageView
+                    android:id="@+id/profilePhoto"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#999"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    bind:setImageUrl="@{oompaDetail.image}"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+            </androidx.cardview.widget.CardView>
+
+        </androidx.cardview.widget.CardView>
+
+
+        <TextView
+            android:id="@+id/fullName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:textColor="@color/textWhite"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView"
+            bind:firstName="@{oompaDetail.firstName }"
+            bind:secondName="@{oompaDetail.lastName }"
+            tools:text="Napp Tilus" />
+
+        <ImageView
+            android:id="@+id/gender"
+            android:layout_width="24dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/ic_gender_female_white_48dp"
+            app:layout_constraintBottom_toBottomOf="@+id/fullName"
+            app:layout_constraintStart_toEndOf="@+id/fullName"
+            app:layout_constraintTop_toTopOf="@+id/fullName"
+            bind:genderIcon="@{oompaDetail.gender}" />
+
+        <TextView
+            android:id="@+id/profession"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@{oompaDetail.profession}"
+            android:textAlignment="center"
+            android:textColor="@color/textWhite"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fullName"
+            tools:text="DEveloper" />
+
+        <View
+            android:id="@+id/lineOne"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="16dp"
+            android:background="#888"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/profession" />
+
+        <ImageView
+            android:id="@+id/countryIcon"
+            android:layout_width="24dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="24dp"
+            app:layout_constraintBottom_toBottomOf="@+id/countryTv"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/countryTv"
+            bind:srcCompat="@drawable/ic_map_marker_white_48dp" />
+
+        <TextView
+            android:id="@+id/countryTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:text="@{oompaDetail.country}"
+            android:textColor="@color/textWhite"
+            app:layout_constraintStart_toEndOf="@+id/countryIcon"
+            app:layout_constraintTop_toBottomOf="@id/lineOne"
+            tools:text="Spain" />
+
+        <View
+            android:id="@+id/lineTwo"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="16dp"
+            android:background="#888"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/countryTv" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="24dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/mailTv"
+            app:layout_constraintStart_toStartOf="@+id/countryIcon"
+            app:layout_constraintTop_toTopOf="@+id/mailTv"
+            bind:srcCompat="@drawable/ic_email_white_48dp" />
+
+        <TextView
+            android:id="@+id/mailTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@{oompaDetail.email}"
+            android:textColor="@color/textWhite"
+            app:layout_constraintStart_toEndOf="@+id/imageView3"
+            app:layout_constraintTop_toBottomOf="@id/lineTwo"
+            tools:text="Spain@gmail.com" />
+
+        <View
+            android:id="@+id/lineThree"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="16dp"
+            android:background="#888"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/mailTv" />
+
+        <ImageView
+            android:id="@+id/iconAge"
+            android:layout_width="24dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/ageTv"
+            app:layout_constraintStart_toStartOf="@+id/imageView3"
+            app:layout_constraintTop_toTopOf="@+id/ageTv"
+            bind:srcCompat="@drawable/ic_calendar_account_white_48dp" />
+
+        <TextView
+            android:id="@+id/ageTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/textWhite"
+            app:layout_constraintStart_toEndOf="@+id/iconAge"
+            app:layout_constraintTop_toBottomOf="@id/lineThree"
+            bind:age="@{oompaDetail.age }"
+            tools:text="18" />
+
+        <View
+            android:id="@+id/lineFour"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+
+            android:layout_marginTop="16dp"
+            android:background="#888"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ageTv" />
+
+        <View
+            android:id="@+id/lineFive"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+
+            android:layout_marginTop="16dp"
+            android:background="#888"
+            bind:layout_constraintStart_toStartOf="parent"
+            bind:layout_constraintTop_toBottomOf="@+id/heightTv" />
+
+
+        <TextView
+            android:id="@+id/heightTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/textWhite"
+            app:layout_constraintStart_toEndOf="@+id/iconHeight"
+            app:layout_constraintTop_toBottomOf="@id/lineFour"
+            bind:height="@{oompaDetail.height }"
+            tools:text="18" />
+
+
+        <ImageView
+            android:id="@+id/iconHeight"
+            android:layout_width="24dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/heightTv"
+            app:layout_constraintStart_toStartOf="@+id/iconAge"
+            app:layout_constraintTop_toTopOf="@+id/heightTv"
+            bind:srcCompat="@drawable/ic_human_male_height_variant_white_48dp" />
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="24dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@+id/iconHeight"
+            app:layout_constraintTop_toBottomOf="@+id/lineFive"
+            bind:srcCompat="@drawable/ic_food_white_48dp" />
+
+        <TextView
+            android:id="@+id/foodTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@{oompaDetail.favorite.food}"
+            android:textColor="@color/textWhite"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+            app:layout_constraintStart_toEndOf="@+id/imageView6"
+            app:layout_constraintTop_toBottomOf="@+id/iconHeight"
+            tools:text="aaple" />
+
+
+        <View
+            android:id="@+id/lineSix"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="16dp"
+            android:background="#888"
+            bind:layout_constraintStart_toStartOf="parent"
+            bind:layout_constraintTop_toBottomOf="@+id/foodTv" />
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="24dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@+id/imageView6"
+            app:layout_constraintStart_toStartOf="@+id/imageView6"
+            app:layout_constraintTop_toBottomOf="@+id/lineSix"
+            bind:srcCompat="@drawable/ic_palette_white_48dp" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@{oompaDetail.favorite.color}"
+            android:textColor="@color/textWhite"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView8"
+            app:layout_constraintStart_toEndOf="@+id/imageView8"
+            app:layout_constraintTop_toBottomOf="@+id/imageView6"
+            tools:text="red" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
