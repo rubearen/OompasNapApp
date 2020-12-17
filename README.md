@@ -1,8 +1,7 @@
 # OompasNap
 
 
-### 3rd-party libraries used ###
-
+External libraries 
 - Kapt: compiler necesary for Data Binding libraries
 - ViewModel: responsible for preparing and managing the data for an Activity or a Fragmen
 - Retrofit and OkHttp: HTTP client 
@@ -15,4 +14,4 @@
 - Junit: unit testing framework
 
 
-
+* pending task: view model unit test
